@@ -27,6 +27,9 @@ module Stackup
       arg
     end
 
+    option ["--endpoint-url"], "END_POINT", "override default endpoint url",
+           :attribute_name => :endpoint_url
+
     option ["--with-role"], "ROLE_ARN", "assume this role",
            :attribute_name => :role_arn
 
@@ -94,6 +97,7 @@ module Stackup
       {
         :log_level => :debug,
         :logger => logger,
+        :endpoint => endpoint_url,
         :region => region,
         :retry_limit => retry_limit
       }.reject { |_k, v| v.nil? }
